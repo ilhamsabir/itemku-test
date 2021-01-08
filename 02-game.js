@@ -44,3 +44,8 @@ function solution(n, users) {
 
 console.log(solution(5, [2,1,2,6,2,4,3,3])) // [ 3, 4, 2, 1, 5 ]
 console.log(solution(4, [4,4,4,4,4])) // [ 4, 1, 2, 3 ]
+
+// Time Complexity: O(n log n)
+// Bacuse it contains of .sort() API which uses "merge sort"
+// Source <https://medium.com/@nandodrw/merge-sort-javascript-and-ecmascript-2015-es6-30a30671da35>
+// Which n is the number of N that is available in the users array

@@ -107,3 +107,6 @@ console.log(solution([
   "Enter uid1234 Prodo",
   "Change uid4567 Ryan"
 ])) // [ 'Prodo came in', 'Ryan came in', 'Prodo has left', 'Prodo came in' ]
+
+// Time Complexity: O(n)
+// Which n is the number of records array
