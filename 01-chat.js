@@ -29,8 +29,8 @@ function simpleSwitch(value, statement, defaultCallback) {
  * @returns {String[]}
  */
 function solution(records) {
+  let users = {} // users in the chat { [id]: name }
   let answers = [] // output results
-  let users = [] // users in the chat (id, name)
   let activities = [] // detail chat activities (id, command)
 
   /**
@@ -40,7 +40,7 @@ function solution(records) {
    * @returns {Object} user data
    */
   const getUser = (userId) => {
-    return users.find(({ id }) => id === userId)
+    return { id: userId, name: users[userId] }
   }
 
   /**
@@ -53,14 +53,10 @@ function solution(records) {
    * @returns {void}
    */
   const insertUser = (newUser) => {
-    for (const i in users) {
-      // check does user id already exist?
-      if (users[i].id === newUser.id) {
-        users[i] = newUser
-        return
-      }
+    users = {
+      ...users,
+      [newUser.id]: newUser.name
     }
-    users.push(newUser)
   }
 
   /**
@@ -70,7 +66,7 @@ function solution(records) {
    * @returns {void}
    */
   const removeUser = (userId) => {
-    users.filter(({ id }) => id !== userId)
+    delete users[userId]
   }
 
   // build detail activities
