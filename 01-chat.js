@@ -1,34 +1,34 @@
 /**
- * Possible command
- * Case sensitive disable
- */
-const ENUM_COMMAND = {
-  ENTER: "enter",
-  LEAVE: "leave",
-  CHANGE: "change"
-}
-
-/**
- * Simple switch helper
- * 
- * @param {any} value - value to compare
- * @param {Object} statement - object of statement (key as val, value as callback)
- * @param {Function|undefined} defaultCallback - default execution when none mathes
- * @return {void}
- */
-function simpleSwitch(value, statement, defaultCallback) {
-  statement[value]
-    ? statement[value]()
-    : defaultCallback && defaultCallback()
-}
-
-/**
  * Main solution function
  * 
- * @param {String[]} records - chat input
+ * @param {String[]} record - chat input
  * @returns {String[]}
  */
-function solution(records) {
+function solution(record) {
+  /**
+   * Possible command
+   * Case sensitive disable
+   */
+  const ENUM_COMMAND = {
+    ENTER: "enter",
+    LEAVE: "leave",
+    CHANGE: "change"
+  }
+
+  /**
+   * Simple switch helper
+   * 
+   * @param {any} value - value to compare
+   * @param {Object} statement - object of statement (key as val, value as callback)
+   * @param {Function|undefined} defaultCallback - default execution when none mathes
+   * @return {void}
+   */
+  function simpleSwitch(value, statement, defaultCallback) {
+    statement[value]
+      ? statement[value]()
+      : defaultCallback && defaultCallback()
+  }
+
   let users = {} // users in the chat { [id]: name }
   let answers = [] // output results
   let activities = [] // detail chat activities (id, command)
@@ -70,7 +70,7 @@ function solution(records) {
   }
 
   // build detail activities
-  records.forEach(record => {
+  record.forEach(record => {
     // split string by space
     const [command, userId, info] = record.split(" ")
     activities.push({ userId, command })

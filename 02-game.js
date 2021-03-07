@@ -1,11 +1,11 @@
 /**
  * Get list of stage with highest failure rate
  * 
- * @param {Number} n - total of the stage
+ * @param {Number} N - total of the stage
  * @param {Number[]} users - reached stage of every user (element must be in range 1 - N + 1)
  * @return {Number[]} number of stage which is sorting by the highest failure rate
  */
-function solution(n, users) {
+function solution(N, users) {
   // failures rate each stages
   // ? format: [[stage, failure_rate], ....]
   let failures = []
@@ -17,7 +17,7 @@ function solution(n, users) {
     [val]: (acc[val] || 0) + 1
   }), {})
   
-  for (let stage = 1; stage <= n; stage++) {
+  for (let stage = 1; stage <= N; stage++) {
     // total of failure users in the stage
     let rateOfFailure = 0
     // total of user in the current stage (default to 0)
@@ -47,5 +47,4 @@ console.log(solution(4, [4,4,4,4,4])) // [ 4, 1, 2, 3 ]
 
 // Time Complexity: O(n log n)
 // Bacause it contains of .sort() API which uses "merge sort"
-// Source <https://medium.com/@nandodrw/merge-sort-javascript-and-ecmascript-2015-es6-30a30671da35>
 // Which n is the number of N that is available in the users array
